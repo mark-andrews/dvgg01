@@ -1,0 +1,31 @@
+---
+title: "My First Document"
+author: "Mark Andrews"
+date: "21/08/2020"
+output: latex_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+# Introduction
+
+
+```{r pressure, fig.cap="A plot of pressure by temperature.", fig.align="center", fig.height = 3}
+library(tidyverse)
+library(cowplot)
+
+
+p1 <- ggplot(pressure,
+       mapping = aes(x = temperature, y = pressure)
+) + geom_point() + geom_line() + theme_classic()
+
+p2 <- ggplot(pressure,
+       mapping = aes(x = pressure)
+) + geom_histogram(bins=10) + theme_classic()
+
+plot_grid(p1, p2, labels = 'auto')
+```
+
+As you can see in Figure \ref{fig:pressure}.
